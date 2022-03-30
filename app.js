@@ -9,6 +9,7 @@ const app = express();
 
 // my routes
 const authRoutes = require('./routes/auth');
+const fetchWords = require('./routes/fetchWords');
 
 app.get('/', (req, res) => {
     res.send('Hello, World');
@@ -32,8 +33,8 @@ app.get('/createDB', (req, res) => {
 
 
 // CREATE TABLE ROUTE
-app.get('/createUserTable', (req, res) => {
-    let sql = "CREATE TABLE users(email VARCHAR(255), name VARCHAR(255), password VARCHAR(255), PRIMARY KEY(email))";
+app.get('/createWordsTable', (req, res) => {
+    let sql = "CREATE TABLE words(s_no int AUTO_INCREMENT, word VARCHAR(255), language_code VARCHAR(10), definition VARCHAR(255), PRIMARY KEY(s_no))";
     db.query(sql, (err) => {
         if(err){
             console.log(err);
@@ -52,6 +53,7 @@ app.use(bodyParser.json());
 
 // MY ROUTES
 app.use('/api', authRoutes);
+app.use('/api', fetchWords);
 
 // STARTING THE SERVER
 app.listen(3000, () => console.log("Server Up and running"));
