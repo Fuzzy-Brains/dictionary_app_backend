@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const Dictionary = require('oxford-dictionary-api');
 const https = require('https');
 const mysql = require('mysql');
-// const db = require('./db/connection'); 
+const db = require('./db/connection'); 
 
 const app = express();
 
