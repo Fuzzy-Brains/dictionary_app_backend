@@ -50,6 +50,11 @@ app.get('/createWordsTable', (req, res) => {
 
 // MIDDLEWARE
 app.use(bodyParser.json());
+app.use(
+    bodyParser.urlencoded({
+      extended: true,
+    })
+  )
 
 // MY ROUTES
 app.use('/api', authRoutes);

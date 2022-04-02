@@ -14,4 +14,13 @@ router.post(
     signup
 )
 
+router.post(
+    '/signin',
+    [
+        check('email', 'email is required').isEmail(),
+        check('password', 'password should be atleast of 3 characters.').isLength({ min: 3})
+    ],
+    signin
+)
+
 module.exports = router;
