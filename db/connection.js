@@ -7,9 +7,9 @@ const client = new pg.Client({
     connectionString: CON_STRING,
     dialect: 'postgresql',
     // ssl: true,
-    dialectOptions: {
-      ssl: { require: true },
-    },
+    ssl: {
+        rejectUnauthorized: false,
+    }
 });
 
 client.connect();
