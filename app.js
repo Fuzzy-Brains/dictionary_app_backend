@@ -4,10 +4,6 @@ const Dictionary = require('oxford-dictionary-api');
 const https = require('https');
 const mysql = require('mysql');
 
-const dotenv = require('dotenv')
-
-dotenv.config()
-
 const db = require('./db/connection'); 
 
 const PORT = process.env.PORT || 3000;
