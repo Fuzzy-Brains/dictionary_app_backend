@@ -5,6 +5,8 @@ const https = require('https');
 const mysql = require('mysql');
 const db = require('./db/connection'); 
 
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 
 // my routes
@@ -63,4 +65,4 @@ app.use('/api', fetchWords);
 app.use('/api', googleDictionaryApi);
 
 // STARTING THE SERVER
-app.listen(3000, () => console.log("Server Up and running"));
+app.listen(PORT, () => console.log("Server Up and running"));
