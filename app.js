@@ -10,6 +10,7 @@ const app = express();
 // my routes
 const authRoutes = require('./routes/auth');
 const fetchWords = require('./routes/fetchWords');
+const googleDictionaryApi = require('./routes/googleDictionaryApi');
 
 app.get('/', (req, res) => {
     res.send('Hello, World');
@@ -59,6 +60,7 @@ app.use(
 // MY ROUTES
 app.use('/api', authRoutes);
 app.use('/api', fetchWords);
+app.use('/api', googleDictionaryApi);
 
 // STARTING THE SERVER
 app.listen(3000, () => console.log("Server Up and running"));
