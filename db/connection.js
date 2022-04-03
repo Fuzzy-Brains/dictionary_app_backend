@@ -5,7 +5,11 @@ const Pool = require('pg').Pool;
 const CON_STRING = 'postgres://zbifugiuxoyjwl:520ec0140798a4e4757f45fb9a92b4dcfe6290116bfe4b2407a0d8f2ae60fe74@ec2-34-207-12-160.compute-1.amazonaws.com:5432/d1dihgggmvp970';
 const client = new pg.Client({
     connectionString: CON_STRING,
+    dialect: 'postgresql',
     ssl: true,
+    dialectOptions: {
+      ssl: { require: true },
+    },
 });
 
 client.connect();
