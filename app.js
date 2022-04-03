@@ -6,7 +6,7 @@ const mysql = require('mysql');
 
 const dotenv = require('dotenv')
 
-dotenv.config({path : 'config.env'})
+dotenv.config({path : './config.env'})
 
 const db = require('./db/connection'); 
 
