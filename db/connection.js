@@ -3,7 +3,7 @@ const pg = require('pg')
 const Pool = require('pg').Pool;
 const dotenv = require('dotenv')
 
-dotenv.config({path : '../config.env'})
+dotenv.config({path : './config.env'})
 const CON_STRING = process.env.DB_URL || 'postgres://root:1234@localhost:5432/dictionary';
 console.log(CON_STRING)
 
