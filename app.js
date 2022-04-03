@@ -37,7 +37,7 @@ app.get('/createDB', (req, res) => {
 
 // CREATE TABLE ROUTE
 app.get('/createWordsTable', (req, res) => {
-    let sql = "CREATE TABLE words(s_no int AUTO_INCREMENT, word VARCHAR(255), language_code VARCHAR(10), definition VARCHAR(255), PRIMARY KEY(s_no))";
+    let sql = "CREATE TABLE words(s_no SERIAL PRIMARY KEY, word VARCHAR(255), language_code VARCHAR(10), part_of_speech VARCHAR(50), definition VARCHAR(255))";
     db.query(sql, (err) => {
         if(err){
             console.log(err);
