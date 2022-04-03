@@ -6,7 +6,7 @@ const CON_STRING = 'postgres://zbifugiuxoyjwl:520ec0140798a4e4757f45fb9a92b4dcfe
 const client = new pg.Client({
     connectionString: CON_STRING,
     dialect: 'postgresql',
-    ssl: true,
+    // ssl: true,
     dialectOptions: {
       ssl: { require: true },
     },
