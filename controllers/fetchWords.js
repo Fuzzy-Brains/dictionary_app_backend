@@ -1,6 +1,26 @@
 const {check, validationResult} = require('express-validator');
 const db = require('../db/connection');
 
+exports.getAllWords = (req, res) => {
+    let sql = 'SELECT * FROM WORDS';
+
+    db.query(sql, (err, results) => {
+        if(err){
+            return res.status(404).json({
+                'statusCode' : 404, 
+                'developerMessage' : 'Some Error Occurred.',
+                'result' : results.rows
+            });
+        }
+
+        return res.status(200).json({
+            'statusCode' : 200, 
+            'developerMessage' : 'Words fetched successfully.',
+            'result' : results.rows
+        });
+    })
+}
+
 exports.fetchDefinitionByWord = (req, res) => {
     const errors = validationResult(req);
 
