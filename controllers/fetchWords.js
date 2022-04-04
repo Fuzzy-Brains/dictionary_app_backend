@@ -22,11 +22,11 @@ exports.getAllWords = (req, res) => {
 }
 
 exports.insertWord = (req, res)=> {
-    const {word, languageCode, partOfSpeech, definition } = req.body;
+    const { englishWord, hindiWord, chhattisgarhiWord } = req.body;
 
-    let sql = 'INSERT INTO words (word, language_code, part_of_speech, definition) VALUES ($1, $2, $3, $4)';
+    let sql = 'INSERT INTO words (english, hindi, chhattisgarhi) VALUES ($1, $2, $3)';
 
-    db.query(sql, [word, languageCode, partOfSpeech, definition], (err, results) => {
+    db.query(sql, [englishWord, hindiWord, chhattisgarhiWord], (err, results) => {
         if(err){
             console.log(err);
             return res.status(404).json({
