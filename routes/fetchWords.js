@@ -2,15 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 const {check} = require('express-validator');
-const {fetchDefinitionByWord, getAllWords, insertWord} = require('../controllers/fetchWords');
+const {fetchDefinitionByWord, getAllWords, insertIntoEnglishWords,
+     insertIntoHindiWords, insertIntoChhattisgarhiWords} = require('../controllers/fetchWords');
 
-router.get(
-    '/getAllWords',
-
-    getAllWords
-)
-
-router.post('/insertWord', insertWord);
+router.get('/getAllWords', getAllWords )
+router.post('/insertIntoEnglishWords', insertIntoEnglishWords);
+router.post('/insertIntoHindiWords', insertIntoHindiWords);
+router.post('/insertIntoChhattisgarhiWords', insertIntoChhattisgarhiWords);
 
 router.post(
     '/fetchDefinitionByWord',

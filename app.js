@@ -38,7 +38,7 @@ app.get('/createDB', (req, res) => {
 
 // CREATE TABLE ROUTE
 app.get('/createWordsTable', (req, res) => {
-    let sql = "CREATE TABLE words(s_no SERIAL PRIMARY KEY, word VARCHAR(255), language_code VARCHAR(10), part_of_speech VARCHAR(50), definition VARCHAR(255))";
+    let sql = "CREATE TABLE chhattisgarhiWords (id SERIAL, english VARCHAR(255), hindi VARCHAR(255), chhattisgarhi VARCHAR(255) PRIMARY KEY)";
     db.query(sql, (err) => {
         if(err){
             console.log(err);
@@ -66,4 +66,4 @@ app.use('/api', fetchWords);
 app.use('/api', googleDictionaryApi);
 
 // STARTING THE SERVER
-app.listen(PORT, () => console.log("Server Up and running"));
+app.listen(PORT, () => console.log("Server Up and running on Port: "+  PORT));
