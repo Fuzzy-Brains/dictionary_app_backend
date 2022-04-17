@@ -3,13 +3,17 @@ const bodyParser = require('body-parser');
 const Dictionary = require('oxford-dictionary-api');
 const https = require('https');
 const mysql = require('mysql');
+
 const db = require('./db/connection'); 
+
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
 // my routes
 const authRoutes = require('./routes/auth');
 const fetchWords = require('./routes/fetchWords');
+const googleDictionaryApi = require('./routes/googleDictionaryApi');
 
 app.get('/', (req, res) => {
     res.send('Hello, World');
@@ -34,7 +38,7 @@ app.get('/createDB', (req, res) => {
 
 // CREATE TABLE ROUTE
 app.get('/createWordsTable', (req, res) => {
-    let sql = "CREATE TABLE words(s_no int AUTO_INCREMENT, word VARCHAR(255), language_code VARCHAR(10), definition VARCHAR(255), PRIMARY KEY(s_no))";
+    let sql = "CREATE TABLE chhattisgarhiWords (id SERIAL, english VARCHAR(255), hindi VARCHAR(255), chhattisgarhi VARCHAR(255) PRIMARY KEY)";
     db.query(sql, (err) => {
         if(err){
             console.log(err);
@@ -50,10 +54,16 @@ app.get('/createWordsTable', (req, res) => {
 
 // MIDDLEWARE
 app.use(bodyParser.json());
+app.use(
+    bodyParser.urlencoded({
+      extended: true,
+    })
+  )
 
 // MY ROUTES
 app.use('/api', authRoutes);
 app.use('/api', fetchWords);
+app.use('/api', googleDictionaryApi);
 
 // STARTING THE SERVER
-app.listen(3000, () => console.log("Server Up and running"));
+app.listen(PORT, () => console.log("Server Up and running on Port: "+  PORT));
