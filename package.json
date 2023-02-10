@@ -18,7 +18,7 @@
     "google-dictionary-api": "^1.0.8",
     "https": "^1.0.0",
     "mysql": "^2.18.1",
-    "oxford-dictionary-api": "^1.0.1",
-    "pg": "^8.7.3"
+    "nodemon": "^2.0.15",
+    "oxford-dictionary-api": "^1.0.1"
   }
 }
